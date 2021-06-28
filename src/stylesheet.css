@@ -1,0 +1,49 @@
+nav {
+  background-color: #fff;
+  height: 10rem;
+}
+
+nav .navbar-brand {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.8;
+  color: #221e1e;
+  font-weight: bolder;
+  font-size: 3rem;
+}
+
+nav li a {
+  font-family: Roboto;
+  font-size: 2rem;
+  color: #000;
+}
+
+.main-body {
+  text-align: center;
+}
+
+footer {
+  font-family: Roboto;
+  font-size: 2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  background-image: -webkit-gradient(linear, left top, right top, from(#f5ce62), color-stop(#e43603), color-stop(#fa7199), to(#e85a19));
+  background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19);
+  -webkit-box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+          box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
+  outline: none;
+  border: none;
+  text-align: center;
+  padding: 15px 32px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 50px;
+  size: 50px;
+  font-size: 35px;
+}
+/*# sourceMappingURL=stylesheet.css.map */
