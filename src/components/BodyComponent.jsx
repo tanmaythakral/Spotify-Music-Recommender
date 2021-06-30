@@ -30,8 +30,6 @@ const genreslist =  [
 
 export default function BodyComponent() {
     
-    var access_token = new URL(window.location).hash.split('&').filter(function(el) { if(el.match('access_token') !== null) return true; })[0].split('=')[1];
-
     const [token , setToken ] = useState('')
     const [genres , setGenres] = useState([])
     const [playlist , setPlaylist] = useState('')
@@ -47,6 +45,9 @@ export default function BodyComponent() {
     const [dance, setDance] = useState(.5)
     
     useEffect(() => {
+        var url = window.location;
+        var access_token = new URL(url).hash.split('&').filter(function(el) { if(el.match('access_token') !== null) return true; })[0].split('=')[1];
+        setToken(access_token)
         axios('https://api.spotify.com/v1/me/top/tracks', {
             method: 'GET',
             headers: {
@@ -127,7 +128,6 @@ export default function BodyComponent() {
             });
         var uri = []
         var songs = []
-        setToken(access_token)
         await axios('https://api.spotify.com/v1/recommendations' , {
             method: 'GET',
             params: {
