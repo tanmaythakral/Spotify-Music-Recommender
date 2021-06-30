@@ -46,8 +46,12 @@ export default function BodyComponent() {
     
     useEffect(() => {
         var url = window.location;
+        try {
         var access_token = new URL(url).hash.split('&').filter(function(el) { if(el.match('access_token') !== null) return true; })[0].split('=')[1];
         setToken(access_token)
+        } catch (e) {
+            console.log("Error")
+        }
         axios('https://api.spotify.com/v1/me/top/tracks', {
             method: 'GET',
             headers: {
