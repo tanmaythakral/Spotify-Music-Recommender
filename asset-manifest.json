@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/Spotify-Music-Recommender/static/css/main.745a2341.chunk.css",
+    "main.js": "/Spotify-Music-Recommender/static/js/main.d803a469.chunk.js",
+    "main.js.map": "/Spotify-Music-Recommender/static/js/main.d803a469.chunk.js.map",
+    "runtime-main.js": "/Spotify-Music-Recommender/static/js/runtime-main.1dcf079f.js",
+    "runtime-main.js.map": "/Spotify-Music-Recommender/static/js/runtime-main.1dcf079f.js.map",
+    "static/js/2.223c48b5.chunk.js": "/Spotify-Music-Recommender/static/js/2.223c48b5.chunk.js",
+    "static/js/2.223c48b5.chunk.js.map": "/Spotify-Music-Recommender/static/js/2.223c48b5.chunk.js.map",
+    "index.html": "/Spotify-Music-Recommender/index.html",
+    "static/css/main.745a2341.chunk.css.map": "/Spotify-Music-Recommender/static/css/main.745a2341.chunk.css.map",
+    "static/js/2.223c48b5.chunk.js.LICENSE.txt": "/Spotify-Music-Recommender/static/js/2.223c48b5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1dcf079f.js",
+    "static/js/2.223c48b5.chunk.js",
+    "static/css/main.745a2341.chunk.css",
+    "static/js/main.d803a469.chunk.js"
+  ]
+}
