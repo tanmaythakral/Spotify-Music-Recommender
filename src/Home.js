@@ -1,14 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import {Link} from 'react-router-dom'
 
-const Credentials = {
-    "Spotify" : [
-        {
-            "ClientId" : '302e8a7bf7464b7c8c53b0ed7fe09005'
-        }
-    ]
-}
 
 
 function authorize(){
@@ -19,7 +10,7 @@ function authorize(){
     //     // crossorigin : true,
     // params: {
     // client_id: Credentials.Spotify[0].ClientId ,
-    // redirect_uri: 'http://localhost:3000/search',
+    // redirect_uri: 'https://spotify-songs-recommender.herokuapp.com/search',
     // response_type: 'token',
     // scope: "playlist-modify-public playlist-modify-private user-top-read"
     // }})
@@ -27,7 +18,7 @@ function authorize(){
     //     console.log(authorizeResponse.request.responseURL);
     //     window.location.replace(authorizeResponse.request.responseURL);
     // });
-    window.location.replace("https://accounts.spotify.com/authorize?client_id=302e8a7bf7464b7c8c53b0ed7fe09005&redirect_uri=http:%2F%2Flocalhost:3000%2Fsearch&response_type=token&scope=playlist-modify-public+playlist-modify-private+user-top-read");
+    window.location.replace("https://accounts.spotify.com/authorize?client_id=302e8a7bf7464b7c8c53b0ed7fe09005&redirect_uri=https:%2F%2Fspotify-songs-recommender.herokuapp.com%2Fsearch&response_type=token&scope=playlist-modify-public+playlist-modify-private+user-top-read");
 };
 
 export default function Home() {
