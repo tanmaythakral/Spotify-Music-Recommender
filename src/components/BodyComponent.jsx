@@ -23,7 +23,7 @@ const genreslist =  [
       "Hip Hop",
       "House",
       "Indie",
-      "Jrock",
+      "Japanese",
       "Kpop",
       "Pop"
     ]
@@ -31,8 +31,6 @@ const genreslist =  [
 export default function BodyComponent() {
     
     const [token , setToken ] = useState('')
-    const [genres , setGenres] = useState([])
-    const [playlist , setPlaylist] = useState('')
     const [uri , setUri]  = useState('')
     const [name , setName] = useState('')
     const [songs , setSong] = useState([{}])
@@ -52,10 +50,14 @@ export default function BodyComponent() {
         } catch (e) {
             console.log("Error")
         }
+        getUserPref(access_token)
+    },[])
+
+    function getUserPref(data) {
         axios('https://api.spotify.com/v1/me/top/tracks', {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer ' + access_token
+                'Authorization': 'Bearer ' + data
             }
         })
         .then(response => {
@@ -75,7 +77,7 @@ export default function BodyComponent() {
         axios('https://api.spotify.com/v1/me/top/artists', {
             method: 'GET',
             headers: {
-                'Authorization': 'Bearer ' + access_token
+                'Authorization': 'Bearer ' + data
             }
         })
         .then(response => {
@@ -89,7 +91,7 @@ export default function BodyComponent() {
             const random = Math.floor(Math.random() * artists.length);
             setTopArtist(artists[random])
         });
-    },[])
+    }
 
     function handleGenreChange(event) {
         setGenreselect(event.target.value)
@@ -119,6 +121,7 @@ export default function BodyComponent() {
     }
 
     async function recommendations() {
+        getUserPref(token)
         axios('https://api.spotify.com/v1/me',{
             headers: {
                 'Accept': 'application/json',
@@ -169,10 +172,10 @@ export default function BodyComponent() {
         
     };
 
-    function makeplaylist() {
+    async function makeplaylist() {
         
             
-            axios('https://api.spotify.com/v1/users/'+ response +'/playlists' , {
+            await axios('https://api.spotify.com/v1/users/'+ response +'/playlists' , {
                 method: 'POST',
                 data: {
                     'name' : 'My Playlist',
@@ -186,8 +189,7 @@ export default function BodyComponent() {
                 },
             })
             .then(playlistresponse => {
-                setPlaylist(playlistresponse.data.id)
-                axios('https://api.spotify.com/v1/playlists/'+ playlist + '/tracks' , {
+                axios('https://api.spotify.com/v1/playlists/'+ playlistresponse.data.id + '/tracks' , {
                     method: 'Post',
                     data: {
                         'uris' : uri
@@ -211,7 +213,7 @@ export default function BodyComponent() {
             <h2>Choose your Genre!</h2>
             <select class="genre-select form-select form-select-lg mb-3" onChange={handleGenreChange} aria-label=".form-select-lg example">
             {
-                genreslist.map((genre , i) => (<option value={i}>{genre}</option>))
+                genreslist.map((genre , i) => (<option value={genre} key={i}>{genre}</option>))
             }
             </select>
             <h2>How many recommendations do you need?</h2>
@@ -221,7 +223,7 @@ export default function BodyComponent() {
             </div>
             <button id = "get-recom"onClick={recommendations} >Get Recommended</button>
             {clicked ? <h1 class = "welcome-header">Ok! <span id = "name">{name}</span> let's get started</h1> : null}
-            {clicked ? createcomponent() : null}
+            {clicked ?  createcomponent() : null}
             {clicked ? <button onClick={makeplaylist} id = "addtoplaylist">Add to Spotify</button> : null}
             </div>
         </>
